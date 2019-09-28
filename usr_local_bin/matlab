@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/MATLAB/R2017b/bin/matlab $@

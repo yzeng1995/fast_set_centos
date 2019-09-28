@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/Altair/2017/altair/scripts/hm $@

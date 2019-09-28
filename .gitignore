@@ -1,0 +1,6 @@
+message.log
+running_time
+error.log
+php-fpm
+start_pptpd.sh
+*.swp
