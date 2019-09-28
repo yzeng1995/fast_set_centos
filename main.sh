@@ -8,7 +8,7 @@ bash_dir="$( cd "$( dirname "$0"  )" && pwd  )"
 
 
 # basic tools
-if [ 1 == 0 ]; then
+if [ 1 == 1 ]; then
 	yum -y install ssh
 	yum -y install sshd
 	yum -y install vim 
@@ -87,13 +87,13 @@ fi
 
 # 基础开发环境
 # GCC系列
-if [ 1 == 0 ]; then
+if [ 1 == 1 ]; then
 	yum -y install gcc                     # C编译器
 	yum -y install gcc-c++                 # C++编译器
 	yum -y install gcc-gfortran            # Fortran编译器
 fi
 # 软件开发辅助工具
-if [ 1 == 0 ]; then
+if [ 1 == 1 ]; then
 	yum -y install make
 	yum -y install gdb     # 代码调试器
 	yum -y install cmake   # Cmake
@@ -142,18 +142,13 @@ if [ 1 == 0 ]; then
 fi
 
 #copy software shutcuts to /usr/local/bin
-if [ 1 == 0 ]; then
-	cp -rf $bash_dir/usr_local_bin/*  /usr/local/bin
-fi
-
-#copy software shutcuts to /usr/local/bin
 if [ 1 == 1 ]; then
 	cp -rf $bash_dir/usr_local_bin/*  /usr/local/bin
 fi
 
 
 #copy software shutcuts to /usr/local/sbin
-if [ 1 == 0 ]; then
+if [ 1 == 1 ]; then
 	cp -rf $bash_dir/usr_local_sbin/*  /usr/local/sbin
 fi
 

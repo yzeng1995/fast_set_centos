@@ -9,6 +9,9 @@
 # 	exit 1
 # fi 
 
+# you should run the following command add the drop rule
+# firewall-cmd --permanent --zone=public --add-rich-rule="rule family=ipv4 source ipset=ssh_drop drop"
+
 
 # local file is generate by /var/log/secure (output file of this shell)
 [ -f /var/log/drop_ssh_ip_local ] || touch /var/log/drop_ssh_ip_local

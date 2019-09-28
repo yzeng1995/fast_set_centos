@@ -56,6 +56,10 @@ This script find the ip do the following things
 1.Add the ip to firewall drop zone.<br>
 2.Add the ip to firewall ipset ssh_drop --permanent<br>
 3.This script will NOT add the ip which is already in ipset ssh_drop.<br>
+4.You should run the following command to add the ipset into firewall.<br>
+firewall-cmd --permanent --zone=public --add-rich-rule="rule family=ipv4 source ipset=ssh_drop drop"
+<br> and add the following line in /etc/crontab to run every minite<br>
+  */1 * * * * root /usr/local/sbin/drop_ssh_hosts_local.sh 1>&2> /dev/null
 
 ## drop_ssh_hosts_public.sh
 If you have a ip list from internet and you want to
