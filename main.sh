@@ -17,6 +17,7 @@ if [ 1 == 0 ]; then
 	yum -y install unzip
 	yum -y install lynx
 	yum -y install expect
+	yum -y install bash-completion
 fi
 # network tools and other service 
 
@@ -43,16 +44,23 @@ fi
 
 # MCS Microcontroller
 #set personal terminal syntax: root and all other users
-cat $bash_dir/set_root_ps1 > /root/.bashrc
-cat $bash_dir/set_other_ps1 > /etc/bashrc
+if [ 1 == 1 ]; then
+	cat $bash_dir/set_root_ps1 > /root/.bashrc
+	cat $bash_dir/set_other_ps1 >> /etc/bashrc
+fi
 
 
 #set root can log ssh
-cat $bash_dir/set_sshd > /etc/ssh/sshd_config
+if [ 1 == 0 ]; then
+	cat $bash_dir/set_sshd > /etc/ssh/sshd_config
+fi
 
 #set vim 
-cat $bash_dir/set_vim > /etc/vimrc
-cp $bash_dir/apdl.vim /usr/share/vim/vim74/syntax/
+if [ 1 == 1 ]; then
+#	update to vim8
+	cat $bash_dir/vim8_added_config.vim >> /etc/vimrc
+#	cp $bash_dir/apdl.vim /usr/share/vim/vim74/syntax/
+fi
 
 #set power-up default
 #systemctl set-default multi-user.target
@@ -66,10 +74,8 @@ cp $bash_dir/apdl.vim /usr/share/vim/vim74/syntax/
 #set period program running
 #cat $bash_dir/set_crontab > /etc/crontab
 
-
-
 #make folder for mount point in /mnt
-if [ 1 == 0 ]; then
+if [ 1 == 1 ]; then
 	for dir_tmp in 1 2 3 4 usb1 usb2 usb3 usb4 nfs1 nfs2 nfs3 nfs4
 	do
 		if [ ! -d "/mnt/$dir_tmp" ]; then
@@ -113,7 +119,6 @@ if [ 1 == 0 ]; then
 	ipv4.dns 202.103.24.68\
 	+ipv4.dns 202.103.0.117\
 	ipv6.method auto
-
 fi
 
 
@@ -132,13 +137,25 @@ fi
 
 #set network environment trusted
 if [ 1 == 0 ]; then
-	firewall-cmd --set-default-zone=trusted
+	firewall-cmd --set-default-zone=public
+#	firewall-cmd --set-default-zone=trusted
 fi
 
 #copy software shutcuts to /usr/local/bin
 if [ 1 == 0 ]; then
 	cp -rf $bash_dir/usr_local_bin/*  /usr/local/bin
+fi
+
+#copy software shutcuts to /usr/local/bin
+if [ 1 == 1 ]; then
+	cp -rf $bash_dir/usr_local_bin/*  /usr/local/bin
+fi
+
+
+#copy software shutcuts to /usr/local/sbin
+if [ 1 == 0 ]; then
 	cp -rf $bash_dir/usr_local_sbin/*  /usr/local/sbin
 fi
+
 
 
