@@ -18,6 +18,8 @@ if [ 1 == 1 ]; then
 	yum -y install lynx
 	yum -y install expect
 	yum -y install bash-completion
+#	screen gun needed
+	yum -y install ncurses-devel
 fi
 # network tools and other service 
 
