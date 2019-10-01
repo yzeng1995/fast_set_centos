@@ -20,7 +20,24 @@ if [ 1 == 1 ]; then
 	yum -y install bash-completion
 #	screen gun needed
 	yum -y install ncurses-devel
+#	centos8 update (need by installing some software)
+	yum install epel-release
 fi
+
+
+# python3 centos8 and pip3
+if [ 1 == 1 ]; then
+	yum -y install python36 python36-devel python36-debug
+#	ranger
+#	https://github.com/ranger/ranger
+	pip3 install ranger-fm
+fi
+
+
+
+
+
+
 # network tools and other service 
 
 if [ 1 == 0 ]; then
