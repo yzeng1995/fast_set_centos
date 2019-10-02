@@ -24,6 +24,12 @@ if [ 1 == 1 ]; then
 	yum install epel-release
 fi
 
+# install obs
+if [ 1 == 1 ]; then
+    yum -y install libcurl libcurl-devel
+    yum -y install nasm
+    yum -y install yasm
+fi
 
 # python3 centos8 and pip3
 if [ 1 == 1 ]; then
