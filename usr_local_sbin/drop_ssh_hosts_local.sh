@@ -1,6 +1,6 @@
 #!/bin/bash
 #Drophosts SHELL SCRIPT 
-# if the number of password failed using ssh is great that 5
+# if the number of password failed using ssh is great that 3
 # then drop!
 
 # IsRun=`ps -ef |grep /usr/local/sbin/drop_ssh_hosts_ |grep -v grep|wc -l`
@@ -28,7 +28,8 @@ IP_ssh_drop_permanent=`awk -F"[<>]" '/entry/{print $3}' /etc/firewalld/ipsets/ss
 
 
 # 1.deal with the ip in /var/log/secure
-for IP in `awk '/Failed/{ip[$(NF-3)]++;}END{for (i in ip){if (ip[i]>5){print i}}}' /var/log/secure`
+# for ip failed limit, set this "ip[i]>3"
+for IP in `awk '/Failed/{ip[$(NF-3)]++;}END{for (i in ip){if (ip[i]>3){print i}}}' /var/log/secure`
 do
 	# if ip is not in IP_ssh_drop_permanent
 	# then add new ip

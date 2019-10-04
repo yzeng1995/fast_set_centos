@@ -45,7 +45,7 @@ The scripts can run on Centos7 system.
 
 This script analysis /var/log/secure file to find the
 ip address whose the number of failed times is greater
-than 5.
+than 3.
 
 Then the script add the ipaddress to /etc/hosts.deny
 to reject ssh connection.
