@@ -178,4 +178,25 @@ if [ 1 == 1 ]; then
 fi
 
 
+# install software package using rpm or compile
+if [ 1 == 0 ]; then
+	cd /tmp
+	# install nasm-2.14
+	rpm -ivh http://software.yzeng1995.top/nasm-2.14.02.92-0.fc27.x86_64.rpm
+
+	wget http://software.yzeng1995.top/last_x264.tar.bz2
+	wget http://software.yzeng1995.top/ffmpeg-4.2.1.tar.gz
+	# install x264
+	tar -jxvf last_x264.tar.bz2
+	cd x264-snapshot-20191001-2245
+	./configure --enable-shared && make && make install
+	
+	# install ffmpeg
+	cd ..
+	tar -zxvf ffmpeg-4.2.1.tar.gz
+	cd ffmpeg-4.2.1
+	./configure && make && make install
+
+fi
+
 
