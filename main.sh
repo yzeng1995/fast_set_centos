@@ -196,7 +196,9 @@ if [ 1 == 0 ]; then
 	tar -zxvf ffmpeg-4.2.1.tar.gz
 	cd ffmpeg-4.2.1
 	./configure && make && make install
-
 fi
 
-
+# install decoder, only enables with using GUI
+if [ 1 == 0 ]; then
+	yum -y install vlc
+fi
