@@ -199,6 +199,9 @@ if [ 1 == 0 ]; then
 fi
 
 # install decoder, only enables with using GUI
+# maybe add source from https://rpmfusion.org/ first
 if [ 1 == 0 ]; then
 	yum -y install vlc
+	yum -y install gstreamer1-plugins-ugly
+	yum -y install gstreamer1-plugins-base-devel
 fi
