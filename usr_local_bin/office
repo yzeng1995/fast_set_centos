@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if (( $# < 1 )); then
+	echo "too less var, pls input 'word','calc','draw' or 'pdf'"
+elif (( $# == 1)); then
+	if [ $1 == "word" ]; then	
+		/usr/lib64/libreoffice/program/oosplash --writer
+	elif [ $1 == "calc" ]; then
+		/usr/lib64/libreoffice/program/oosplash --calc
+	elif [ $1 == "draw" ]; then
+		/usr/lib64/libreoffice/program/oosplash --draw
+	elif [ $1 == "pdf" ]; then
+		/usr/bin/evince
+	else
+		echo "invalid var, pls input 'word','calc','draw' or 'pdf'"
+	fi
+elif (( $# == 2)); then
+	if [ $1 == "word" ]; then	
+		/usr/lib64/libreoffice/program/oosplash --writer $2
+	elif [ $1 == "calc" ]; then
+		/usr/lib64/libreoffice/program/oosplash --calc $2
+	elif [ $1 == "draw" ]; then
+		/usr/lib64/libreoffice/program/oosplash --draw $2
+	elif [ $1 == "pdf" ]; then
+		/usr/bin/evince $2
+	else
+		echo "the second para should input file name"
+	fi
+elif (( $# > 2)); then
+	echo "too much var"
+fi
