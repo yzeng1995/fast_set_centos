@@ -205,3 +205,34 @@ if [ 1 == 0 ]; then
 	yum -y install gstreamer1-plugins-ugly
 	yum -y install gstreamer1-plugins-base-devel
 fi
+
+# install obs, only enables with using GUI
+if [ 1 == 0 ]; then
+	yum -y install libcurl-devel
+	yum -y install x264 x264-devel x264-libs
+	yum -y install qt5-qtsvg-devel qt5-qtsvg
+	yum -y install qt5-qtx11extras qt5-qtx11extras-devel
+	yum -y install libgudev system-config-printer-udev systemd-udev
+	yum -y install libstoragemgmt-udev
+	yum -y install vlc-devel vlc-extras
+	yum -y install mbedtls mbedtls-utils mbedtls-static mbedtls-devel
+	yum -y install freetype freetype-devel
+	yum -y install fontconfig fontconfig-devel
+	yum -y install speex speexdsp alsa-plugins-speex
+	yum -y install libbs2b
+	yum -y install alsa-lib alsa-utils* alsa-lib-devel
+	yum -y install alsa-plugins* alsa-ucm
+	yum -y install jack-audio-connection-kit
+	yum -y install jack-audio-connection-kit-dbus
+	yum -y install jack-audio-connection-kit-devel
+	yum -y install pulseaudio pulseaudio-libs-devel pulseaudio-libs
+
+
+fi
+
+
+
+
+
+
+
