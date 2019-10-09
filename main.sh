@@ -166,16 +166,23 @@ if [ 1 == 0 ]; then
 #	firewall-cmd --set-default-zone=trusted
 fi
 
-#copy software shutcuts to /usr/local/bin
+# copy software shutcuts to /usr/local/bin
 if [ 1 == 1 ]; then
 	cp -rf $bash_dir/usr_local_bin/*  /usr/local/bin
 fi
 
 
-#copy software shutcuts to /usr/local/sbin
+# copy software shutcuts to /usr/local/sbin
 if [ 1 == 1 ]; then
 	cp -rf $bash_dir/usr_local_sbin/*  /usr/local/sbin
 fi
+
+# set firewall ssh drop
+if [ 1 == 1 ]; then
+	firewall-cmd --permanent --new-ipset=ssh_drop --type=hash:ip
+	firewall-cmd --permanent --zone=public --add-rich-rule 'rule family=ipv4 source ipset=ssh_drop drop'
+fi
+
 
 
 # install software package using rpm or compile
