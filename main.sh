@@ -126,39 +126,10 @@ if [ 1 == 1 ]; then
 	yum -y install git-svn # git的svn插件
 	yum -y install python-devel
 	yum -y install java
+	yum -y install firewalld
 fi
 
 
-#setting network
-#set inner network
-
-if [ 1 == 0 ]; then
-	nmcli con add \
-	type ethernet \
-	ifname p8p1\
-	con-name office_inner \
-	connection.autoconnect yes\
-	ipv4.method manual\
-	ipv4.address 192.168.100.1/24\
-	ipv4.gateway 192.168.100.3\
-	ipv4.dns 202.103.24.68\
-	+ipv4.dns 202.103.0.117\
-	ipv6.method auto
-fi
-
-
-#set outer network
-if [ 1 == 0 ]; then
-	nmcli con add \
-	type ethernet \
-	ifname eth0\
-	con-name \
-	office_outer \
-	connection.autoconnect yes\
-	ifname eth1\
-	ipv4.method manual\
-	ipv4.address 192.168.100.3/24
-fi
 
 #set network environment trusted
 if [ 1 == 0 ]; then
@@ -181,6 +152,16 @@ fi
 if [ 1 == 1 ]; then
 	firewall-cmd --permanent --new-ipset=ssh_drop --type=hash:ip
 	firewall-cmd --permanent --zone=public --add-rich-rule 'rule family=ipv4 source ipset=ssh_drop drop'
+fi
+
+# install screen from package
+
+if [ 1 == 0 ]; then
+	wget http://software.yzeng1995.top/screen-4.7.0.tar.gz
+	# install screen
+	tar -zxvf screen-4.7.0.tar.gz
+	cd screen-4.7.0
+	./configure --enable-shared && make && make install
 fi
 
 
