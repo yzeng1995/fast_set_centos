@@ -71,4 +71,13 @@ the drop zone in firewall.
 
 This script will NOT add the ip which is already in firewall drop zone.
 
+## dnspod_ddns.sh
+2019-10-22 updated<br>
+This program is for ddns on local host, using bash shell.<br>
+This program has less dependence for esay using on a lot of kind of systems.
+
+The jq version depends on jq on your system.
+
+
+
 
