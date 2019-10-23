@@ -133,6 +133,8 @@ fi
 
 #set network environment trusted
 if [ 1 == 0 ]; then
+	systemctl enable firewalld.service
+	systemctl restart firewalld.service
 	firewall-cmd --set-default-zone=public
 #	firewall-cmd --set-default-zone=trusted
 fi
@@ -157,11 +159,13 @@ fi
 # install screen from package
 
 if [ 1 == 0 ]; then
+	cd /tmp
 	wget http://software.yzeng1995.top/screen-4.7.0.tar.gz
 	# install screen
 	tar -zxvf screen-4.7.0.tar.gz
 	cd screen-4.7.0
 	./configure --enable-shared && make && make install
+	cd $bash_dir
 fi
 
 
@@ -184,6 +188,7 @@ if [ 1 == 0 ]; then
 	tar -zxvf ffmpeg-4.2.1.tar.gz
 	cd ffmpeg-4.2.1
 	./configure && make && make install
+	cd $bash_dir
 fi
 
 # install decoder, only enables with using GUI
