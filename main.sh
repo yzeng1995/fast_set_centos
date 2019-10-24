@@ -191,6 +191,12 @@ if [ 1 == 0 ]; then
 	cd $bash_dir
 fi
 
+# install transmission deamon
+if [ 1 == 0 ]; then
+	rpm -ivh http://geekery.altervista.org/geekery/el8/x86_64/geekery-release-8-2.noarch.rpm
+	yum install -y transmission transmission-daemon transmission-common
+fi
+
 # install decoder, only enables with using GUI
 # maybe add source from https://rpmfusion.org/ first
 if [ 1 == 0 ]; then
