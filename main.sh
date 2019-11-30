@@ -229,8 +229,18 @@ if [ 1 == 0 ]; then
 
 fi
 
+# Enable RPM Fusion on your system
+if [ 1 == 0 ]; then
+    dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    dnf install --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+    dnf install --nogpgcheck https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+    dnf config-manager --enable PowerTools
+fi
 
-
+# install ffmpeg and obs from RPM Fusion
+if [ 1 == 0 ]; then
+	yum -y install ffmpeg obs-studio
+fi
 
 
 
