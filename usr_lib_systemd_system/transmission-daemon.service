@@ -1,0 +1,17 @@
+[Unit]
+Description=Transmission daemon
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/transmission-daemon.pid
+ExecStartPre=/usr/bin/rm -f /run/transmission-daemon.pid
+ExecStart=/usr/local/bin/transmission-daemon -g /var/lib/transmission -x /run/transmission-daemon.pid
+KillSignal=SIGQUIT
+TimeoutStopSec=5
+KillMode=mixed
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+

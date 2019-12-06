@@ -150,6 +150,13 @@ if [ 1 == 1 ]; then
 	cp -rf $bash_dir/usr_local_sbin/*  /usr/local/sbin
 fi
 
+
+# copy service and daemon to /usr/lib/systemd/system
+if [ 1 == 0 ]; then
+	cp -rf $bash_dir/usr_lib_systemd_system/*  /usr/lib/systemd/system
+fi
+
+
 # set firewall ssh drop
 if [ 1 == 1 ]; then
 	firewall-cmd --permanent --new-ipset=ssh_drop --type=hash:ip
