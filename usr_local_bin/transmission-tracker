@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "This program is to add/remove tracker."
+echo "Now, the imformation is the following."
+auth=user:password
+transmission-remote -n $auth -l
+
+if (( $# < 1 )); then
+    echo "too less variables, please input '[add(remove)]' 'torrent id' and 'tracker(tracker id)'"
+elif (( $# == 2)); then
+        transmission-remote -n $auth -t $1 -td $2
+elif (( $# == 3)); then
+    if [ $1 == "add" ]; then        
+        transmission-remote -n $auth -t $2 -td $3
+    elif [ $1 == "remove" ]; then
+        transmission-remote -n $auth -t $2 -tr $3
+    else
+        echo "invalid variable, please input 'add' or 'remove'"
+    fi  
+else
+    echo "variables invaild, please input 'add(remove)' 'torrent id' and 'tracker(tracker id)'"
+fi

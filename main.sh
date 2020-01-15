@@ -21,7 +21,9 @@ if [ 1 == 1 ]; then
 #	screen gun needed
 	yum -y install ncurses-devel
 #	centos8 update (need by installing some software)
-	yum install epel-release
+	yum -y install epel-release
+	yum -y groupinstall "Development Tools"
+	yum -y install glibc-static libstdc++-static
 fi
 
 # install obs
