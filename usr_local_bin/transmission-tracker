@@ -7,7 +7,15 @@ auth=uname:passwd
 transmission-remote -n $auth -l
 
 if (( $# < 1 )); then
-	echo "too less variables, please input '[add(remove)]' 'torrent id' and 'tracker(tracker id)'"
+	echo "too less variables"
+	echo "usage:"
+	echo "2 variables:"
+	echo "	app down-id tracker(add)"
+	echo "3 variables:"
+	echo "	app add down-id tracker(add-single)"
+	echo "	app curl http-webpage(add-multi)"
+	echo "	app cat tracker-file(add-multi)"
+	echo "	app remove down-id tracker-id(remove)"
 elif (( $# == 2)); then
 	transmission-remote -n $auth -t $1 -td $2
 elif (( $# == 3)); then
