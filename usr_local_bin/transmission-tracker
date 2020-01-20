@@ -2,21 +2,32 @@
 
 echo "This program is to add/remove tracker."
 echo "Now, the imformation is the following."
-auth=user:password
+
+auth=uname:passwd
 transmission-remote -n $auth -l
 
 if (( $# < 1 )); then
-    echo "too less variables, please input '[add(remove)]' 'torrent id' and 'tracker(tracker id)'"
+	echo "too less variables, please input '[add(remove)]' 'torrent id' and 'tracker(tracker id)'"
 elif (( $# == 2)); then
-        transmission-remote -n $auth -t $1 -td $2
+	transmission-remote -n $auth -t $1 -td $2
 elif (( $# == 3)); then
-    if [ $1 == "add" ]; then        
-        transmission-remote -n $auth -t $2 -td $3
-    elif [ $1 == "remove" ]; then
-        transmission-remote -n $auth -t $2 -tr $3
-    else
-        echo "invalid variable, please input 'add' or 'remove'"
-    fi  
+	if [ $1 == "add" ]; then	
+		transmission-remote -n $auth -t $2 -td $3
+	elif [ $1 == "remove" ]; then
+		transmission-remote -n $auth -t $2 -tr $3
+	elif [ $1 == "curl" ]; then
+		for tracker in `curl $3 2>&1 | grep udp`
+		do
+			transmission-remote -n $auth -t $2 -td $tracker
+		done
+	elif [ $1 == "cat" ]; then
+		for tracker in `cat $3 | grep udp`
+		do
+			transmission-remote -n $auth -t $2 -td $tracker
+		done
+	else
+		echo "invalid variable, please input 'add' or 'remove'"
+	fi
 else
-    echo "variables invaild, please input 'add(remove)' 'torrent id' and 'tracker(tracker id)'"
+	echo "variables invaild, please input 'add(remove)' 'torrent id' and 'tracker(tracker id)'"
 fi
