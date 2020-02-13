@@ -141,6 +141,15 @@ if [ 1 == 0 ]; then
 #	firewall-cmd --set-default-zone=trusted
 fi
 
+# support for qiniu cloud, a control tool qrsctl
+# please uncomment the needed one
+if [ 1 == 1 ]; then
+#	wget http://devtools.qiniu.com/linux/amd64/qrsctl?ref=developer.qiniu.com -o $bash_dir/usr_local_bin/qrsctl # Linux-x64
+#	wget http://devtools.qiniu.com/linux/386/qrsctl -o $bash_dir/usr_local_bin/qrsctl # Linux-x32
+#	wget http://devtools.qiniu.com/linux/arm/qrsctl -o $bash_dir/usr_local_bin/qrsctl # Linux-armv6
+fi
+
+
 # copy software shutcuts to /usr/local/bin
 if [ 1 == 1 ]; then
 	cp -rf $bash_dir/usr_local_bin/*  /usr/local/bin
@@ -234,15 +243,13 @@ if [ 1 == 0 ]; then
 	yum -y install jack-audio-connection-kit-dbus
 	yum -y install jack-audio-connection-kit-devel
 	yum -y install pulseaudio pulseaudio-libs-devel pulseaudio-libs
-
-
 fi
 
 # Enable RPM Fusion on your system
 if [ 1 == 0 ]; then
-    dnf install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-    dnf install --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
-    dnf install --nogpgcheck https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+    dnf -y install --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    dnf -y install --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+    dnf -y install --nogpgcheck https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
     dnf config-manager --enable PowerTools
 fi
 
@@ -251,6 +258,15 @@ if [ 1 == 0 ]; then
 	yum -y install ffmpeg obs-studio
 fi
 
+# install ZeroTier-One
+if [ 1 == 0 ]; then
+	curl -s https://install.zerotier.com | sudo bash
+fi
 
-
+# install ZeroTier-One
+# If you have GPG installed, a more secure option is available
+if [ 1 == 0 ]; then
+	curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
+	if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
+fi
 
