@@ -41,11 +41,6 @@ if [ 1 == 1 ]; then
 	pip3 install ranger-fm
 fi
 
-
-
-
-
-
 # network tools and other service 
 
 if [ 1 == 0 ]; then
@@ -213,6 +208,14 @@ fi
 if [ 1 == 0 ]; then
 	rpm -ivh http://geekery.altervista.org/geekery/el8/x86_64/geekery-release-8-2.noarch.rpm
 	yum install -y transmission transmission-daemon transmission-common
+fi
+
+
+# proxy
+if [ 1 == 0 ]; then
+	yum -y install privoxy
+	cat < set_bash_proxy >> /etc/bashrc
+
 fi
 
 # install decoder, only enables with using GUI
