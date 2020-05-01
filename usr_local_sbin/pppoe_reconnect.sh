@@ -1,6 +1,6 @@
 #!/bin/bash
 
-connection="pppoe-eth"
+connection="pppoe-eth0.1642"
 # keep=[0,1]=[normal,enforce alive]
 # if at normal model, the program is not effect when connection is already down.
 # if at enforce model, the program enforce connection up.
@@ -17,6 +17,7 @@ if [ $isConnectionUp -eq 0  ];then
 		nmcli con up $connection
 	else
 		echo "the option 'keep' is invalid!"
+		exit
 	fi
 else
 	echo "Connection is up, then get gateway!"
@@ -30,8 +31,11 @@ ping -c 3 $gateway 2>/dev/null 1>/dev/null
 if [ $? -eq 0  ];then
 	echo "ppp is already connected and stable!"
 else
-	echo "ppp is ready to restart and reconnect"
 	nmcli con down $connection
 	sleep 5
 	nmcli con up $connection
+	IP=`nmcli con show pppoe-eth0.1642 |grep "IP4.ADDRESS\[1\]" | awk -F' ' '{print $2}'`
+	echo "`date` ip=$IP, ppp is ready to restart and reconnect" >> /var/log/pppoe_reconnect.log
+	echo "ppp is ready to restart and reconnect"
 fi
+
