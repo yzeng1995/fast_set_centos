@@ -78,6 +78,10 @@ This program has less dependence for esay using on a lot of kind of systems.
 
 The jq version depends on jq on your system.
 
-
+## pppoe_reconnect.sh
+If ISP auto enforces change IP address but the IP address is not 
+change in interface, NetworkManager is not able to
+auto reconnect. This program helps to detect the invalid connection
+and reconnect.
 
 
