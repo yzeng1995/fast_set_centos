@@ -6,6 +6,8 @@
 
 bash_dir="$( cd "$( dirname "$0"  )" && pwd  )"
 
+setenforce 0
+echo 1 > /proc/sys/net/ipv4/ip_forward
 
 # basic tools
 if [ 1 == 1 ]; then
@@ -272,4 +274,27 @@ if [ 1 == 0 ]; then
 	curl -s 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
 	if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
 fi
+
+
+# install Quagga
+# bgp, ospf, etc.
+if [ 1 == 0 ]; then
+	yum -y install readline readline-devel
+	yum -y install c-ares c-ares-devel
+
+    cd /tmp
+    wget http://software.yzeng1995.top/quagga-1.2.4.tar.gz
+    # install quagga
+    tar -zxvf quagga-1.2.4.tar.gz
+    cd quagga-1.2.4
+	./configure --enable-vtysh --enable-user=root --enable-group=root --localstatedir=/var/run/quagga --sysconfdir=/etc/quagga && make && make install
+	mkdir /var/run/quagga
+	chmod 777 /var/run/quagga
+	mkdir /var/log/quagga/
+	chmod 777 /var/log/quagga/
+    cd $bash_dir
+fi
+
+
+
 
