@@ -8,6 +8,7 @@ bash_dir="$( cd "$( dirname "$0"  )" && pwd  )"
 
 setenforce 0
 echo 1 > /proc/sys/net/ipv4/ip_forward
+echo "1" > /proc/sys/net/ipv6/conf/all/forwarding
 
 # basic tools
 if [ 1 == 1 ]; then
