@@ -3,6 +3,8 @@
 # This program establish ddns service
 # to modify the public ip address of dns server.
 # The dns server is dnspod.
+# /etc/crontab
+# */10 * * * * root /usr/local/sbin/dnspod_ddns.sh 1>&2> /dev/null
 
 TOKEN="177,4e"
 DOMAIN="y5.t"
