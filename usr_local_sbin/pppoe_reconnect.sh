@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# /etc/crontab
+# */1 * * * * root /usr/local/sbin/pppoe_reconnect.sh 1>&2> /dev/null
+
 connection="pppoe-eth0.1642"
 # keep=[0,1]=[normal,enforce alive]
 # if at normal model, the program is not effect when connection is already down.
