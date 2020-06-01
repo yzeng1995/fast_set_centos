@@ -288,9 +288,7 @@ if [ 1 == 0 ]; then
     # install quagga
     tar -zxvf quagga-1.2.4.tar.gz
     cd quagga-1.2.4
-	./configure --enable-vtysh --enable-user=root --enable-group=root --localstatedir=/var/run/quagga --sysconfdir=/etc/quagga && make && make install
-	mkdir /var/run/quagga
-	chmod 777 /var/run/quagga
+	./configure --enable-vtysh --enable-user=root --enable-group=root --localstatedir=/var/run --sysconfdir=/etc/quagga && make && make install
 	mkdir /var/log/quagga/
 	chmod 777 /var/log/quagga/
     cd $bash_dir
