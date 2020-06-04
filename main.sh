@@ -284,7 +284,7 @@ if [ 1 == 0 ]; then
 	yum -y install c-ares c-ares-devel
 
     cd /tmp
-    wget http://software.yzeng1995.top/quagga-1.2.4.tar.gz
+    wget "http://software.yzeng1995.top/quagga-1.2.4.tar.gz" -O quagga-1.2.4.tar.gz
     # install quagga
     tar -zxvf quagga-1.2.4.tar.gz
     cd quagga-1.2.4
@@ -292,6 +292,9 @@ if [ 1 == 0 ]; then
 	mkdir /var/log/quagga/
 	chmod 777 /var/log/quagga/
     cd $bash_dir
+	cp -rf $bash_dir/usr_lib_systemd_system/zebra.service  /usr/lib/systemd/system
+	cp -rf $bash_dir/usr_lib_systemd_system/ospfd.service  /usr/lib/systemd/system
+	cp -rf $bash_dir/usr_lib_systemd_system/ospf6d.service  /usr/lib/systemd/system
 fi
 
 
