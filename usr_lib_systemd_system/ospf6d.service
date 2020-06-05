@@ -1,5 +1,5 @@
 [Unit]
-Description=GNU Ospfd routing manager
+Description=GNU Ospf6d routing manager
 Wants=network.target
 Before=network.target
 Requires=zebra.service
@@ -12,7 +12,7 @@ Documentation=man:ospf6d
 Type=forking
 PIDFile=/var/run/ospf6d.pid
 ExecStartPre=/usr/bin/rm -f /run/ospf6d.pid
-ExecStart=/usr/local/sbin/ospf6d -d -A 127.0.0.1 -f /etc/quagga/ospf6d.conf
+ExecStart=/usr/local/sbin/ospf6d -d -A ::1 -f /etc/quagga/ospf6d.conf
 ExecReload=/bin/kill -s HUP $MAINPID
 KillSignal=SIGQUIT
 KillMode=mixed
