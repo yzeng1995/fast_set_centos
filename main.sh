@@ -129,6 +129,16 @@ if [ 1 == 1 ]; then
 	yum -y install firewalld
 fi
 
+# hfsplus hfs+ support, apple fs support
+# but only support read only mode, maybe x86_64 support
+# reference: https://forums.centos.org/viewtopic.php?t=67360
+if [ 1 == 1 ]; then
+	rpm --import http://elrepo.org/RPM-GPG-KEY-elrepo.org
+	yum install https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm # centos8
+	#yum install https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm #centos7
+	yum -y install kmod-hfsplus
+	yum -y install hfsplus-tools
+fi
 
 
 #set network environment trusted
