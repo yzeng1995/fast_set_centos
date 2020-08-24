@@ -15,6 +15,7 @@ ping -c 3 $oppositeTunnelIP 2>/dev/null 1>/dev/null
 if [ $? -eq 0  ];then
     echo "ssh is already connected and stable!"
 else
+	ps -ef |grep ssh|grep fCN|grep " $tunnel "|awk -F' ' '{print $2}'|xargs -I {} kill {}
     ssh  -fCN $tunnel $oppositeIP
     echo "`date` $oppositeIP, ssh tunnel is restarted and reconnected" >> /var/log/ssh_reconnect.log
 fi
