@@ -24,7 +24,9 @@ LINE_ID=`echo $JOSN_RECORDS|sed '/line_id/ s/.*line_id":"\(.*\)","type.*/\1/'`
 IP_RESOLVED=`echo $JOSN_RECORDS|sed '/value/ s/.*value":"\(.*\)","enabled.*/\1/'`
 
 #================get real ip
-REAL_IP=`cat</dev/tcp/ns1.dnspod.net/6666`
+#REAL_IP=`cat</dev/tcp/ns1.dnspod.net/6666`
+REAL_IP=`curl -s  myip.ipip.net|awk -F' |：' '{print $3}'`
+
 #REAL_IP="2.2.3.2"
 if [ $REAL_IP != $IP_RESOLVED ]; then
 	#================modify record
