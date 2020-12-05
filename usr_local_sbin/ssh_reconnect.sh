@@ -5,7 +5,9 @@
 # */2 * * * * root /usr/local/sbin/ssh_reconnect.sh 1>&2> /dev/null
 
 # IP or domain name
-oppositeIP="a.y.to"
+# You can add -4 or -6 options before the domain name
+# if you would like to use ipv4 or ipv6.
+oppositeIP="-4 a.y.to"
 oppositeTunnelIP="1.11.1.8"
 tunnel="-w0:0"
 
@@ -16,7 +18,7 @@ if [ $? -eq 0  ];then
     echo "ssh is already connected and stable!"
 else
 	ps -ef |grep ssh|grep fCN|grep " $tunnel "|awk -F' ' '{print $2}'|xargs -I {} kill {}
-    ssh -4 -fCN $tunnel $oppositeIP
+    ssh -fCN $tunnel $oppositeIP
     echo "`date` $oppositeIP, ssh tunnel is restarted and reconnected" >> /var/log/ssh_reconnect.log
 fi
 
