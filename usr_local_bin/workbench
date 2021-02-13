@@ -1,2 +1,0 @@
-#!/bin/bash
-/opt/ansys_inc/v180/Framework/bin/Linux64/runwb2 $@

@@ -1,2 +1,0 @@
-#!/bin/bash
-/opt/MATLAB/R2019b/bin/matlab $@

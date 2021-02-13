@@ -1,2 +1,0 @@
-#!/bin/bash
-/opt/ansys_inc/v180/fluent/bin/fluent $@

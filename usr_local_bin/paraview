@@ -1,2 +1,0 @@
-#!/bin/bash
-/opt/ParaView-5.2/bin/paraview $@

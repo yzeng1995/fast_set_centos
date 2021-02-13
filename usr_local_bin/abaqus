@@ -1,2 +1,0 @@
-#!/bin/bash
-/opt/DassaultSystemes/SIMULIA/Commands/abaqus $@
