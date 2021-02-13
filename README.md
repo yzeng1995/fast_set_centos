@@ -16,7 +16,7 @@ This program has less dependence for esay using on a lot of kind of systems.
 之前的ipv4版本因为官方推荐的api无法使用，也进行了一次更新（之前更新的时候说过）。<br>
 因为openwrt和centos之类的系统定时任务配置文件不一样，所以更新了说明。<br>
 
-教程：<br>
+教程：请关注一下我的youtube和b站账号，旋律果子<br>
 Youtube:https://www.youtube.com/watch?v=NOODcwi8bnI <br>
 B站:https://www.bilibili.com/video/BV1s64y1u7Un
 
