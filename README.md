@@ -1,8 +1,11 @@
 # fast_set_centos
 
-Author:Yan Zeng
+Author:Yan Zeng, 旋律果子
 
 E-mail:zengyan16@mails.ucas.edu.cn
+
+This repositorie only retains the DDNS program, other files have been transferred and are not being maintained. 
+
 
 License:MIT
 
